@@ -34,6 +34,7 @@ public class KafkaWithSpringBootApplication implements CommandLineRunner{
 		template.send("helloworld.t","xyz");
 		template.send("helloworld.t","def");
 		latch.await(5, TimeUnit.SECONDS);
+		logger.info("All msgs received");
 	}
 
 
@@ -41,6 +42,7 @@ public class KafkaWithSpringBootApplication implements CommandLineRunner{
 	public void listen(ConsumerRecord<?,?> cr)
 	{
 		logger.info(cr.value().toString());
+
 		latch.countDown();
 	}
 }
