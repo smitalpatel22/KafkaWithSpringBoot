@@ -42,7 +42,7 @@ public class KafkaWithSpringBootApplication implements CommandLineRunner{
 	public void listen(ConsumerRecord<?,?> cr)
 	{
 		logger.info(cr.value().toString());
-
+		System.out.println("abc");
 		latch.countDown();
 	}
 }
